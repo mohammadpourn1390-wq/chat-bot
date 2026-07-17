@@ -24,5 +24,6 @@ while True:
     for i in responses:
         if i in user_message:
             print(responses[i])
+            break
         else:
             print("این را هنوز بلد نیستم")
