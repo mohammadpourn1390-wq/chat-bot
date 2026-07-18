@@ -10,6 +10,8 @@ responses = {
 print("🤖 سلام! من چت‌ بات تو هستم.")
 print("رابنویس exit برای خروج\n")
 
+history = []
+
 while True:
     user_message = input("👤 شما: ").strip().lower()
 
@@ -22,8 +24,14 @@ while True:
         print("🤖 خداحافظ!")
         break
     elif user_message == "خداحافظ":
-        print("سلام من رو به مادرت ابلاغ کن")
+        print("🤖سلام من رو به مادرت ابلاغ کن")
         break
+
+    if user_message == "history":
+        for word in history:
+            print(history)
+    else:
+        history.append(user_message)
 
     found = False
 
