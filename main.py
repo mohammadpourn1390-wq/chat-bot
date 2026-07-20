@@ -3,7 +3,7 @@ responses = {
     "خوبی": "من عالی‌ام، ممنون.",
     "اسمت چیه": "من یک چت‌ بات پایتونی هستم.",
     "کمک": "چه کمکی از دستم برمیاد؟",
-    "ممنون": "خواهش می‌کنم ❤️"
+    "ممنون": "خواهش می‌کنم ❤️",
 }
 
 
@@ -15,8 +15,6 @@ history = []
 while True:
     user_message = input("👤 شما: ").strip().lower()
 
-    
-
     # EIXIT LOOP
     if user_message == "exit":
         print("🤖 خداحافظ!")
@@ -26,11 +24,13 @@ while True:
         break
 
     if user_message == "history":
-        for word in history:
-            print("📜 تاریخچه گفتگو:", word)
+        if not history:
+            print("📜 تاریخچه گفتگووجود ندارد:")
+        for message in history:
+            print(f'{message["role"]}: {message["content"]}')
         continue
     else:
-        history.append(user_message)
+        history.append({"role": "user", "content": user_message})
 
     found = False
 
@@ -38,7 +38,13 @@ while True:
         if keyword in user_message:
             print("🤖", answer)
             found = True
+            history.append({"role": "assistant", "content": answer})
             break
-        
+
     if not found:
-        print("این را هنوز بلد نیستم")
+        answer = "این را هنوز بلد نیستم"
+        print("🤖", answer)
+        history.append({
+            "role": "assistant",
+            "content": answer
+        })
