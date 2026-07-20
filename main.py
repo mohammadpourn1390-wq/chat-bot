@@ -15,9 +15,7 @@ history = []
 while True:
     user_message = input("👤 شما: ").strip().lower()
 
-    user_message = user_message.replace("؟", "")
-    user_message = user_message.replace("!", "")
-    user_message = user_message.replace(".", "")
+    
 
     # EIXIT LOOP
     if user_message == "exit":
@@ -30,6 +28,7 @@ while True:
     if user_message == "history":
         for word in history:
             print("📜 تاریخچه گفتگو:", word)
+        continue
     else:
         history.append(user_message)
 
