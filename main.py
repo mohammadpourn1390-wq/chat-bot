@@ -1,25 +1,10 @@
 from responses import responses
-from memory import show_history
+from memory import show_history, save_history, load_history
 from ui import welcome
 from chatbot import get_answer
 import json
 
 
-def save_history(history):
-
-    with open("data/history.json", "w", encoding="utf-8") as file:
-        json.dump(
-            history,
-            file,
-            ensure_ascii=False,
-            indent=4
-        )
-
-
-def load_history():
-
-    with open("data/history.json", "r", encoding="utf-8") as file:
-        return json.load(file)
 
 
 welcome()
