@@ -1,3 +1,6 @@
+from responses import responses
+from chatbot import get_answer
+
 def welcome():
     print("🤖 سلام! من چت‌بات تو هستم.")
     print("برای خروج exit را بنویس.\n")
@@ -14,29 +17,10 @@ def show_history(history):
     for message in history:
 
         if message["role"] == "user":
-            print(f"👤, {message["content"]}\n")
+            print(f"👤, {message['content']}\n")
 
         else:
-            print(f"🤖, {message["content"]}\n")
-
-
-def get_answer(user_message, responses):
-
-    for keyword, answer in responses.items():
-
-        if keyword in user_message:
-            return answer
-
-    return None
-
-
-responses = {
-    "سلام": "سلام! خوش اومدی",
-    "خوبی": "من عالی‌ام، ممنون.",
-    "اسمت چیه": "من یک چت‌ بات پایتونی هستم.",
-    "کمک": "چه کمکی از دستم برمیاد؟",
-    "ممنون": "خواهش می‌کنم ❤️",
-}
+            print(f"🤖, {message['content']}\n")
 
 
 welcome()
@@ -58,17 +42,13 @@ while True:
     if user_message == "history":
         show_history(history)
         continue
-    else:
-        history.append({"role": "user", "content": user_message})
 
     answer = get_answer(user_message, responses)
 
     if answer:
         print("🤖", answer)
-        history.append({"role": "assistant", "content": answer})
-        continue
-
     else:
         answer = "این را هنوز بلد نیستم"
         print("🤖", answer)
-        history.append({"role": "assistant", "content": answer})
+
+    history.append({"role": "user", "content": user_message})
