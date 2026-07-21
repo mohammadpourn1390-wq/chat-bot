@@ -1,3 +1,5 @@
+import json
+
 def show_history(history):
 
     if not history:
@@ -13,3 +15,18 @@ def show_history(history):
 
         else:
             print(f'\n🤖 {message["content"]}\n')
+
+def save_history(history):
+
+    with open("data/history.json", "w", encoding="utf-8") as file:
+        json.dump(
+            history,
+            file,
+            ensure_ascii=False,
+            indent=4
+        )
+
+def load_history():
+
+    with open("data/history.json", "r", encoding="utf-8") as file:
+        return json.load(file)
