@@ -4,24 +4,20 @@
         "content": "سلام"
     },
     {
-        "role": "user",
-        "content": "ببرقر"
+        "role": "bot",
+        "content": "سلام! خوش اومدی"
     },
     {
         "role": "user",
-        "content": "hello"
+        "content": "يثبث"
+    },
+    {
+        "role": "bot",
+        "content": "این را هنوز بلد نیستم"
     },
     {
         "role": "user",
-        "content": "خوبي"
-    },
-    {
-        "role": "user",
-        "content": "سلام"
-    },
-    {
-        "role": "user",
-        "content": "سلام"
+        "content": "خداخافظ"
     },
     {
         "role": "bot",
