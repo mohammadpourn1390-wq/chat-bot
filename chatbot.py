@@ -51,6 +51,6 @@ class ChatBot:
                 print(f'\n🤖 {message["content"]}\n')
 
 
-    def add_massege(self, massege):
+    def add_message(self, massege):
         self.history.append(massege)      
 
