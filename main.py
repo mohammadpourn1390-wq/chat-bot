@@ -1,6 +1,6 @@
 from responses import responses
 from ui import welcome
-from chatbot import get_answer
+from chatbot import ChatBot
 from normalize import normalizer
 from memory import (
     show_history,
@@ -9,7 +9,7 @@ from memory import (
 )
 import json
 
-
+bot = ChatBot()
 
 
 welcome()
@@ -36,7 +36,7 @@ while True:
         show_history(history)
         continue
 
-    answer = get_answer(user_message, responses)
+    answer = bot.get_answer(user_message, responses)
 
     if answer:
         print("🤖", answer)
