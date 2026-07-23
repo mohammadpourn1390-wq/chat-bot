@@ -2,11 +2,6 @@ from responses import responses
 from ui import welcome
 from chatbot import ChatBot
 from normalize import normalizer
-from memory import (
-    show_history,
-    save_history,
-    load_history
-)
 import json
 
 bot = ChatBot()
@@ -15,13 +10,12 @@ bot = ChatBot()
 welcome()
 
 
-history = load_history()
 
 while True:
     user_message = normalizer(input("👤 شما: "))
 
     # APPEND HISTORY (USER)
-    history.append({"role": "user", "content": user_message})
+    bot.history.append({"role": "user", "content": user_message})
 
     # EIXIT LOOP
     if user_message == "exit":
@@ -33,7 +27,7 @@ while True:
 
     # PRINT HISTORY
     if user_message == "history":
-        show_history(history)
+        bot.show_history()
         continue
 
     answer = bot.get_answer(user_message, responses)
@@ -45,6 +39,6 @@ while True:
         print("🤖", answer)
 
     # APPEND HISTORY (BOT)
-    history.append({"role": "bot", "content": answer})
-    save_history(history)
+    bot.history.append({"role": "bot", "content": answer})
+    bot.save_history(history)
 
